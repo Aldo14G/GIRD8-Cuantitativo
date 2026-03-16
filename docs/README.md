@@ -1,6 +1,14 @@
 # Evolución de la Calidad de Datos Abiertos en Nuevo León 2024–2026
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-GIRD8--Cuantitativo-blue)](https://github.com/Aldo14G/GIRD8-Cuantitativo)
+[![License: CC-BY-SA-4.0](https://img.shields.io/badge/License-CC--BY--SA--4.0-green)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-yellow)](https://www.python.org/)
+
 > Versión 2.0 — Integra y extiende `ricalanis/comovamoslabnle1` (2024)
+
+---
+
+[![Open Science](https://img.shields.io/badge/Open-Science-Repo-orange)](https://github.com/Aldo14G/GIRD8-Cuantitativo)
 
 ---
 
@@ -76,7 +84,7 @@ GIRD8-Cuantitativo/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/[tu-usuario]/GIRD8-Cuantitativo.git
+git clone https://github.com/Aldo14G/GIRD8-Cuantitativo.git
 cd GIRD8-Cuantitativo
 
 # Crear entorno virtual
