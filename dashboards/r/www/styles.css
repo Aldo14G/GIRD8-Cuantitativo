@@ -1,0 +1,39 @@
+.skin-blue .main-header .logo,
+.skin-blue .main-header .navbar {
+  background-color: #f2c94c !important;
+  color: #111827 !important;
+}
+
+.skin-blue .main-header .logo:hover,
+.skin-blue .main-header .navbar:hover {
+  background-color: #eab308 !important;
+}
+
+.skin-blue .main-sidebar {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+}
+
+.skin-blue .sidebar-menu > li.active > a,
+.skin-blue .sidebar-menu > li:hover > a {
+  border-left-color: #f2c94c;
+  background: #0f172a;
+}
+
+.box.box-solid.box-warning > .box-header {
+  background: #f2c94c;
+  color: #111827;
+}
+
+.content-wrapper,
+.right-side {
+  background: #f8fafc;
+}
+
+.small-box.bg-yellow {
+  background-color: #f2c94c !important;
+  color: #111827 !important;
+}
+
+.small-box .icon {
+  color: rgba(17, 24, 39, 0.25);
+}

@@ -1,0 +1,76 @@
+[project]
+name = "nl-data-quality"
+version = "2.0.0"
+description = "Evolución de la Calidad de Datos Abiertos en Nuevo León 2024-2026"
+readme = "docs/README.md"
+requires-python = ">=3.11"
+license = {text = "CC-BY-SA-4.0"}
+authors = [
+    {name = "Proyecto GIRD 8 - Cuantitativo", email = "contacto@ejemplo.com"}
+]
+keywords = ["open-data", "ckan", "data-quality", "open-science", "nuevo-leon"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Creative Commons Attribution Share Alike 4.0 International (CC-BY-SA-4.0)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+dependencies = [
+    "requests>=2.31.0",
+    "pandas>=2.1.0",
+    "numpy>=1.26.0",
+    "statsmodels>=0.14.0",
+    "beautifulsoup4>=4.12.0",
+    "openai>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+    "mypy>=1.7.0",
+]
+
+[project.scripts]
+nl-quality-extract = "src.extract:main"
+nl-quality-evaluate = "src.evaluate:main"
+nl-quality-longitudinal = "src.longitudinal:main"
+run-pipeline = "scripts.run_pipeline:main"
+
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4"]
+ignore = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --tb=short"

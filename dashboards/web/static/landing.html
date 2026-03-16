@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Landing ejecutiva para revisar el estado actual de la calidad de Datos NL en snapshots Bronze, Silver y Gold."
+    >
+    <title>Datos NL | Estado Actual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    >
+    <link rel="stylesheet" href="/landing.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script type="module" src="/js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <header class="hero" role="banner">
+      <div class="hero-content">
+        <p class="eyebrow">Gobierno Abierto Nuevo Leon</p>
+        <h1>Estado actual de calidad de Datos NL</h1>
+        <p class="lead">
+          Monitorea calidad tecnica, cobertura de CSV, y comportamiento longitudinal
+          2024-2026 con una interfaz simple, trazable y orientada a decisiones.
+        </p>
+      </div>
+      <nav class="hero-actions" aria-label="Acciones principales">
+        <a class="btn btn-secondary" href="/dashboard">Abrir dashboard analitico</a>
+        <button class="btn btn-primary" id="downloadExecutive" type="button">Descargar resumen JSON</button>
+      </nav>
+    </header>
+
+    <main class="page" id="main-content">
+      <aside class="panel controls" aria-label="Panel de filtros">
+        <h2>Filtros</h2>
+
+        <label for="snapshotSelect">Snapshot</label>
+        <select id="snapshotSelect"></select>
+
+        <label for="orgFilter">Dependencia</label>
+        <select id="orgFilter"></select>
+
+        <label for="searchInput">Buscar dataset</label>
+        <input id="searchInput" type="text" placeholder="Nombre o titulo">
+
+        <div class="range-group">
+          <div>
+            <label for="scoreMin">Score minimo</label>
+            <input id="scoreMin" type="number" min="0" max="1" step="0.01" value="0">
+          </div>
+          <div>
+            <label for="scoreMax">Score maximo</label>
+            <input id="scoreMax" type="number" min="0" max="1" step="0.01" value="1">
+          </div>
+        </div>
+
+        <section class="status-box" aria-live="polite" aria-atomic="true">
+          <p id="snapshotInfo">Snapshot: --</p>
+          <p id="healthInfo">Estado: cargando...</p>
+        </section>
+
+        <section class="source-box" aria-label="Fuentes de datos">
+          <h3>Fuentes cargadas</h3>
+          <ul id="sourceList"></ul>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <section class="kpi-grid" id="kpiGrid" aria-label="Indicadores clave"></section>
+
+        <section class="panel summary" id="summaryBlock" aria-label="Lectura ejecutiva"></section>
+
+        <section class="grid-two" aria-label="Calidad de datasets">
+          <article class="panel chart-container">
+            <h2>Distribucion de grados por dataset</h2>
+            <div class="chart-wrapper"><canvas id="gradeChart"></canvas></div>
+          </article>
+          <article class="panel chart-container">
+            <h2>Promedio por dimension metadata</h2>
+            <div class="chart-wrapper"><canvas id="dimensionChart"></canvas></div>
+          </article>
+        </section>
+
+        <section class="panel chart-container" aria-label="Ranking de dependencias">
+          <h2>Ranking de dependencias (top 10)</h2>
+          <div class="chart-wrapper tall"><canvas id="orgChart"></canvas></div>
+        </section>
+
+        <section class="grid-two" aria-label="Tablas de prioridad">
+          <article class="panel">
+            <h2>Top 5 datasets</h2>
+            <table id="topTable"></table>
+          </article>
+          <article class="panel">
+            <h2>Alertas prioritarias</h2>
+            <table id="alertTable"></table>
+          </article>
+        </section>
+
+        <section class="panel" id="longitudinalBox" aria-label="Resumen longitudinal"></section>
+      </section>
+    </main>
+  </body>
+</html>

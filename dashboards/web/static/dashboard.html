@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NL Open Data Quality v2026</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Calidad de Datos Abiertos NL v2026</h1>
+        <p class="subtitle">
+          Interfaz minimalista para decision publica, inspirada en principios de claridad,
+          trazabilidad y evidencia cuantitativa.
+        </p>
+      </div>
+      <div class="status-pill" id="serverStatus">Conectando...</div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel controls">
+        <h2>Controles</h2>
+
+        <label for="snapshotSelect">Snapshot principal</label>
+        <select id="snapshotSelect"></select>
+
+        <label for="snapshotA">Comparacion A</label>
+        <select id="snapshotA"></select>
+
+        <label for="snapshotB">Comparacion B</label>
+        <select id="snapshotB"></select>
+
+        <label for="orgFilter">Dependencia</label>
+        <select id="orgFilter"></select>
+
+        <label for="scoreMin">Score minimo</label>
+        <input id="scoreMin" type="number" min="0" max="1" step="0.01" value="0" />
+
+        <label for="scoreMax">Score maximo</label>
+        <input id="scoreMax" type="number" min="0" max="1" step="0.01" value="1" />
+
+        <label for="datasetSelect">Dataset</label>
+        <select id="datasetSelect"></select>
+
+        <div class="source-block">
+          <h3>Fuentes</h3>
+          <ul id="sourceList"></ul>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div class="kpis" id="kpiGrid"></div>
+
+        <nav class="tabs" aria-label="Secciones">
+          <button class="tab active" data-tab="dataset">Dataset</button>
+          <button class="tab" data-tab="dependencias">Dependencias</button>
+          <button class="tab" data-tab="longitudinal">Longitudinal</button>
+          <button class="tab" data-tab="contenido">Contenido</button>
+        </nav>
+
+        <section class="tab-panel active" id="tab-dataset">
+          <div class="grid two">
+            <article class="panel">
+              <h2>Resumen Dataset</h2>
+              <div id="datasetSummary"></div>
+              <div class="actions">
+                <button id="downloadDatasetCsv">Descargar CSV dataset</button>
+                <button id="downloadDatasetJson">Descargar JSON dataset</button>
+              </div>
+            </article>
+            <article class="panel">
+              <h2>Puntaje Final</h2>
+              <canvas id="datasetScoreChart" height="210"></canvas>
+            </article>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <h2>Radar Metadata (5D)</h2>
+              <canvas id="datasetRadarChart" height="300"></canvas>
+            </article>
+            <article class="panel">
+              <h2>Detalle tecnico</h2>
+              <table id="datasetMetricsTable"></table>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-dependencias">
+          <div class="panel">
+            <h2>Ranking por dependencia</h2>
+            <canvas id="orgRankingChart" height="420"></canvas>
+            <div class="actions">
+              <button id="downloadOrgsCsv">Descargar ranking CSV</button>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <h2>Distribucion de grados</h2>
+              <canvas id="orgGradeChart" height="240"></canvas>
+            </article>
+            <article class="panel">
+              <h2>Cobertura CSV</h2>
+              <canvas id="orgCoverageChart" height="240"></canvas>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-longitudinal">
+          <div class="panel">
+            <h2>Delta 2026 - 2024</h2>
+            <canvas id="deltaChart" height="320"></canvas>
+            <div class="actions">
+              <button id="downloadDeltaCsv">Descargar deltas CSV</button>
+              <button id="downloadGoldJson">Descargar reporte Gold</button>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <article class="panel">
+              <h2>Comparacion Snapshot A/B</h2>
+              <canvas id="compareChart" height="320"></canvas>
+            </article>
+            <article class="panel">
+              <h2>Resumen comparacion</h2>
+              <table id="compareTable"></table>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-contenido">
+          <div class="panel">
+            <h2>Meta score vs Content score</h2>
+            <canvas id="contentScatter" height="360"></canvas>
+            <div class="actions">
+              <button id="downloadFilteredCsv">Descargar filtrado CSV</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Notas metodologicas</h2>
+            <div id="contentNotes"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

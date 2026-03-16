@@ -1,0 +1,240 @@
+:root {
+  --bg: #f6f8fb;
+  --panel: #ffffff;
+  --ink: #111827;
+  --muted: #5b6475;
+  --line: #d7dde7;
+  --accent: #0f62fe;
+  --ok: #1f7a1f;
+  --warn: #a36100;
+  --bad: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Google Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  max-width: 64ch;
+  font-size: 0.92rem;
+}
+
+.status-pill {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem;
+}
+
+.panel h2 {
+  margin: 0 0 0.7rem;
+  font-size: 1rem;
+}
+
+.controls {
+  position: sticky;
+  top: 78px;
+  height: calc(100vh - 90px);
+  overflow: auto;
+}
+
+.controls label {
+  display: block;
+  margin: 0.55rem 0 0.3rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+select,
+input,
+button {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.5rem 0.55rem;
+  background: #fff;
+  color: var(--ink);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+
+.source-block {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.source-block h3 {
+  margin: 0.2rem 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.source-block ul {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.kpi {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.kpi .label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.kpi .value {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 650;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.9rem 0;
+}
+
+.tab {
+  width: auto;
+  padding: 0.45rem 0.8rem;
+  background: #fff;
+}
+
+.tab.active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.tab-panel {
+  display: none;
+  gap: 0.8rem;
+}
+
+.tab-panel.active {
+  display: grid;
+}
+
+.grid.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  padding: 0.45rem;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.actions button {
+  flex: 1;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1180px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    position: static;
+    height: auto;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}
