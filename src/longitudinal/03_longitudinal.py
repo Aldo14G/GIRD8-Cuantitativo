@@ -31,19 +31,21 @@ import numpy as np
 import pandas as pd
 
 # ── Import de 02_evaluate (sin importlib frágil) ──────────────────────────────
-# FIX: Reemplaza el importlib.spec_from_file_location que rompía si
-# el directorio de trabajo no era el raíz del proyecto.
-sys.path.insert(0, str(Path(__file__).parent))
+import importlib.util
 
-from evaluate_02 import (  # type: ignore[import]
-    evaluate_catalog,
-    aggregate_by_organization,
-)
+evaluate_module_path = Path(__file__).resolve().parent.parent / "evaluate" / "02_evaluate.py"
+spec = importlib.util.spec_from_file_location("evaluate_02", evaluate_module_path)
+evaluate_module = importlib.util.module_from_spec(spec)
+sys.modules["evaluate_02"] = evaluate_module
+spec.loader.exec_module(evaluate_module)
+
+evaluate_catalog = evaluate_module.evaluate_catalog
+aggregate_by_organization = evaluate_module.aggregate_by_organization
 
 # ── Constantes ─────────────────────────────────────────────────────────────────
 
-SILVER_DIR = Path("data/silver")
-GOLD_DIR   = Path("data/gold")
+SILVER_DIR = Path("data/processed")
+GOLD_DIR   = Path("data/output")
 GOLD_DIR.mkdir(parents=True, exist_ok=True)
 
 # Datasets existentes antes de esta fecha = corpus t0 (2024)

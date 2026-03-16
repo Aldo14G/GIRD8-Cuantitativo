@@ -789,8 +789,8 @@ if __name__ == "__main__":
     print(f"  LLM proveedor: {LLM_PROVIDER} / {LLM_MODEL}")
     print("=" * 60 + "\n")
 
-    BRONZE_DIR = Path("data/bronze")
-    SILVER_DIR = Path("data/silver")
+    BRONZE_DIR = Path("data/raw")
+    SILVER_DIR = Path("data/processed")
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
 
     # Cargar Bronze más reciente

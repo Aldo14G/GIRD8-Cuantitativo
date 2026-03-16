@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "last_updated": "2026-03-15T21:30:00Z",
+  "pipeline": {
+    "01_extract": {
+      "status": "completed",
+      "last_run": "2026-03-15",
+      "datasets_processed": 71,
+      "source": "CKAN API catalogodatos.nl.gob.mx"
+    },
+    "02_evaluate": {
+      "status": "completed",
+      "last_run": "2026-03-15",
+      "datasets_processed": 71,
+      "llm_provider": "openai",
+      "llm_model": "gpt-4o-mini"
+    },
+    "03_longitudinal": {
+      "status": "completed",
+      "last_run": "2026-03-15",
+      "t0_datasets": 19,
+      "t1_datasets": 71,
+      "dependencies_analyzed": 4
+    }
+  },
+  "data_files": {
+    "bronze": {
+      "latest_snapshot": "catalog_snapshot_20260315.json",
+      "latest_flat": "catalog_flat_20260315.csv"
+    },
+    "silver": {
+      "latest_datasets": "evaluated_datasets_20260315.csv",
+      "latest_organizations": "evaluated_organizations_20260315.csv"
+    },
+    "gold": {
+      "latest_report": "report_longitudinal_20260315.json",
+      "latest_deltas": "delta_dependencias_20260315.csv"
+    }
+  },
+  "notes": []
+}
